@@ -1,0 +1,63 @@
+<div class="section">
+  <div class="level">
+    <div class="level-left">
+      <div class="level-item">
+        <div class="field has-addons">
+          <p class="control">
+            <Input @value={{this.filter}} class="input" placeholder="Filter by library name" />
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-desktop rows">
+    <div class="column is-four-fifths">
+      <div class="card">
+        <Input class="input" @value={{this.title}} placeholder="Title" />
+        <div class="card-content">
+          <Input class="input" @value={{this.description}} placeholder="Description" />
+        </div>
+        <footer class="card-footer">
+          <a class="card-footer-item" {{on "click" (action this.addBook)}}>Create</a>
+        </footer>
+      </div>
+    </div>
+    {{#each this.filteredList as |book|}}
+    <div class="column is-four-fifths">
+      <div class="card">
+        <header class="card-header">
+          {{#if book.isEditing}}
+          <Input class="input" @value={{book.title}} placeholder="Title" />
+          {{else}}
+          <p class="card-header-title">
+            {{@model.name}} - {{book.title}}
+          </p>
+          {{/if}}
+        </header>
+        <div class="card-content">
+          <div class="content">
+            {{#if book.isEditing}}
+            <Input class="input" @value={{book.description}} placeholder="Description" />
+            {{else}}
+            {{book.description}}
+            {{/if}}
+            <br>
+            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          </div>
+        </div>
+        <footer class="card-footer">
+          {{#if book.isEditing}}
+          <a class="card-footer-item" {{on "click" (fn  update book)}}>Save</a>
+          {{else}}
+          <a class="card-footer-item" {{on "click" (fn isEditing book)}}>Edit</a>
+          {{/if}}
+
+
+          <a class="card-footer-item" {{on "click" (action delete book)}}>Delete</a>
+        </footer>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

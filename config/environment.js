@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'motorcycle-shop',
+    modulePrefix: 'dlr-library',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -31,7 +31,13 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
+  
+
   if (environment === 'test') {
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
+
     // Testem prefers this...
     ENV.locationType = 'none';
 
@@ -44,7 +50,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+   
   }
 
   return ENV;

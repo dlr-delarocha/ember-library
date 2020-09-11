@@ -1,0 +1,73 @@
+<div class="section">
+    <div class="level">
+        <div class="level-left">
+            <div class="level-item">
+                <div class="field has-addons">
+                    <p class="control">
+                        <Input @value={{this.filter}} class="input" placeholder="Filter by library name" />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table id="authores-table" class="table is-fullwidth">
+        <thead>
+            <tr>
+                <th><abbr title="">Name
+                        <span {{on "click" toggleAngleDirection}}>
+                            {{fa-icon this.angleDirection}}
+                        </span>
+                    </abbr>
+                </th>
+                <th><abbr title="">Nationality</abbr>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <Input class="input" @value={{this.name}} placeholder="Name" />
+                </td>
+                <td>
+                    <Input class="input" @value={{this.nationality}} placeholder="Nationality" />
+                </td>
+
+                <td>
+                    <button type="button" class="button is-primary" {{on "click" this.addAuthor}}>Save</button>
+                </td>
+            </tr>
+            {{#each this.filteredList as |author|}}
+            <tr>
+                {{#if author.isEditing}}
+                <td>
+                    <Input class="input" @value={{author.name}} placeholder="Name" />
+                </td>
+                <td>
+                    <Input class="input" @value={{author.nationality}} placeholder="Nationality" />
+                </td>
+                <td>
+                    <button type="button" class="button is-small"
+                        {{on "click" (fn this.update author)}}>{{fa-icon "check"}}</button>
+                    <button type="button" class="button is-small"
+                        {{on "click" (fn this.changeToEdit author)}}>{{fa-icon "times"}}</button>
+                </td>
+                {{else}}
+                <td>
+                    <LinkTo @route="author" @model={{author.id}}>{{author.name}}</LinkTo>
+                </td>
+                <td>
+                    {{author.nationality}}
+                </td>
+                <td>
+                    <button type="button" class="button is-small"
+                        {{on "click" (fn this.changeToEdit author)}}>{{fa-icon "edit"}} </button>
+                    <button type="button" class="button is-small"
+                        {{on "click" (fn this.delete author)}}>{{fa-icon "trash"}}</button>
+                </td>
+                {{/if}}
+
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+@import "bulma";
+.navbar  {
+   box-shadow: 0 2px 0 rgba(10,0,0,.1);
+}
+
+.rows{
+   display: flex;
+   flex-direction: column;
+}
+
+#authores-table tbody tr td span{
+   margin-left: 5%;
+   opacity: 0;
+}
+
+#authores-table tbody tr td:hover span{
+   opacity: 0.8;
+}
+
