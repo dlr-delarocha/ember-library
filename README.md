@@ -12,7 +12,6 @@ In developed mode was added [ember-cli-mirage](https://www.ember-cli-mirage.com/
 This application only process two kind  of resources Authors and Books, both are created, update and deleted using [JSON API](https://jsonapi.org/examples/) specifications   
 
 ```mermaid
-graph LR
 A((author)) -- hasMany --> B((book))
 B((book)) -- belonTo -->  A((author)) 
 ```
@@ -25,14 +24,14 @@ Following are the endpoint needed for deploy in a production  environment, curre
 **Full URL** = https://localhost/api
 
 | HTTP Verb  | Endpoint  | 
-|--|--|--|
-|POST| authors |
-|GET| authors |
-|GET| authors/id |
-|GET| authors?filter='string' |
-|GET| authors/id?include=books |
-|POST| books |
-|POST| books/id |
+|------------|-----------|
+|POST        | authors   |
+|GET         | authors   |
+|GET         | authors/id |
+|GET         | authors?filter='string' |
+|GET         | authors/id?include=books |
+|POST        | books |
+|POST        | books/id |
 
 ## Prerequisites
 
